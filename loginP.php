@@ -2,10 +2,10 @@
 session_start();
 require_once "condb.php";
 $uname=$_POST['usernames'];
-$upasswd=$_POST['passwords'];
+$upasswd=$_POST['Password   '];
 $_SESSION['user_name']="";
 
-$sql="SELECT * FROM user WHERE user_name='".$uname."' AND user_password='".$upasswd."'";
+$sql="SELECT * FROM user WHERE user_name='.$uname.' AND user_password='.$upasswd.'";
 $result=$conn->query($sql);
 if($result->num_rows == 1)
 {
