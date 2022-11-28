@@ -10,12 +10,27 @@
     <title>Signin</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-   
+    <link href="bootstrap/css/signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
+  <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
     
 
-  <form action="loginP.php" method="post">
+  <form class="form-signin" action="loginP.php" method="post">
 
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -24,19 +39,15 @@
       <label for="floatingInput">UserName</label>
     </div>
     <div class="form-floating" >
-      <input type="password" class="form-control" id="floatingPassword" name="uPassword">
+      <input type="password" class="form-control" id="floatingPassword" name="Password">
       <label for="floatingPassword">Password</label>
     </div>
     <br>
-    <a href="index.php" type="submit" name="submit" value="ok" >lllll</a>
+    
     <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Sign in</button>
   </form>
 <br>
-<form action="loginP.php" method="post" >
-        Username: <input type="text" name="usernames"><br>
-        Password: <input type="password" name="passwords"><br>
-        <input type="submit" value="OK">
-    </form>
+
 
 
     <!-- JavaScript Bundle with Popper -->
