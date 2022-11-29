@@ -12,9 +12,24 @@ if($result->num_rows == 1)
 {
     $rs=$result->fetch_array();
     $_SESSION['user_id']=(int)$rs['user_id'];
+    $_SESSION['user_level']=(int)$rs['user_level'];
     $_SESSION['login_name']=$rs['user_name'] ;
     $_SESSION['full_name']=$rs['user_firstname']." ".$rs['user_lastname'];
-    header("location: index.php");
+    if($rs['user_level'] == 1)
+    {
+        header("location: index.php");
+    }
+    
+    else if($rs['user_level'] == 0)
+    {
+        header("location: http://www.youtube.com");
+    }
+    
+    else
+    {
+        header("location: login.php");
+    }
+    
 }
 else
 {

@@ -11,9 +11,7 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link href="bootstrap/css/signin.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-  <style>
+    <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -28,8 +26,10 @@
         }
       }
     </style>
+  </head>
+  <body class="text-center">
+  
     
-
   <form class="form-signin" action="loginP.php" method="post">
 
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
