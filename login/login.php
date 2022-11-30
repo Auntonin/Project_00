@@ -9,8 +9,8 @@
     <meta name="generator" content="Hugo 0.104.2">
     <title>Signin</title>
     <!-- CSS only -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link href="bootstrap/css/signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link href="../bootstrap/css/signin.css" rel="stylesheet">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -51,6 +51,6 @@
 
 
     <!-- JavaScript Bundle with Popper -->
-<script src="bootstrap/js/bootstrap.min.js" ></script>
+<script src="../bootstrap/js/bootstrap.min.js" ></script>
   </body>
 </html>

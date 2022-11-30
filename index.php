@@ -20,7 +20,31 @@ require_once "condb.php";
     <?php
       require_once ("manu.php")
     ?>
-    
+    <table border="1">
+        <tr>
+            
+            <td>product_type</td>
+        </tr>
+        <?php
+$sql = "SELECT * FROM product";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) 
+  {
+    ?>
+        <tr>
+            <!-- <td><?=$row['product_id_type']?></td> -->
+            <td><?=$row['product_type']?></td>
+           
+        </tr>
+    <?php
+      }
+    } else {
+      echo "0 results";
+    }
+    $conn->close();
+    ?>
+    </table>
       </div>
     
 

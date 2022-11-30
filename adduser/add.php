@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>add</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link href="bootstrap/css/signin.css" rel="stylesheet">
+    <title>sing-up</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link href="../bootstrap/css/signin.css" rel="stylesheet">
 </head>
 <body>
 <style>
@@ -50,8 +50,7 @@
 <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Sign Up</button>
 </form>
 <br>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5oH9Nr3bKfw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<br>
+
 
 
 
