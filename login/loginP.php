@@ -7,7 +7,7 @@ $_SESSION['login_name']="";
 
 
 $sql="SELECT * FROM user WHERE user_name='$uname' AND user_password='$upasswd' ";
-echo $sql ;
+
 $result=$conn->query($sql);
 if($result->num_rows == 1)
 {

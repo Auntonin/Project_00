@@ -23,18 +23,18 @@ require_once "condb.php";
     <table border="1">
         <tr>
             
-            <td>product_type</td>
+            <td>category</td>
         </tr>
         <?php
-$sql = "SELECT * FROM product";
+$sql = "SELECT * FROM category";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) 
   {
     ?>
         <tr>
-            <!-- <td><?=$row['product_id_type']?></td> -->
-            <td><?=$row['p_type']?></td>
+            <td><?=$row['cate_id']?></td>
+            <td><?=$row['cate_name']?></td>
            
         </tr>
     <?php

@@ -1,20 +1,11 @@
 
 <?php
 session_start();
-require_once "condb.php";
+if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
+{ 
+  require_once('condb.php');
 
-$sql="SELECT * FROM user ";
-$result=$conn->query($sql);
-$rs=$result->fetch_array();
-$_SESSION['user_level']=(int)$rs['user_level'];
-    
-    if($rs['user_level'] == 1)
-    {
-        header("location: index.php");
-    }
-    
-    elseif($rs['user_level'] == 0)
-    { ?>
+  ?>
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -35,10 +26,11 @@ $_SESSION['user_level']=(int)$rs['user_level'];
       <table class="border border-secondary" >
         <tr>
             
-            <td>product_type</td>
+            <td>category</td>
         </tr>
+        
         <?php
-$sql = "SELECT * FROM product";
+$sql = "SELECT * FROM category";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) 
@@ -46,8 +38,8 @@ if ($result->num_rows > 0) {
     ?>
         <tr>
             
-            <td><?=$row['p_type']?></td>
-            <td><a type='button' class='btn btn-outline-primary me-2' href='admin/edit_product_type.php?id=<?=$row['p_type']?>'>edit</a></td>
+            <td><?=$row['cate_name']?></td>
+            <td><a type='button' class='btn btn-outline-primary me-2' href='admin/edit_cate.php?id=<?=$row['p_type']?>'>edit</a></td>
 
            
         </tr>
@@ -59,7 +51,7 @@ if ($result->num_rows > 0) {
     $conn->close();
     ?>
     <tr>
-    <td><a type='button' class='btn btn-outline-primary me-2' href='admin/add_product_type.php'>add-product</a></td>
+    <td><a type='button' class='btn btn-outline-primary me-2' href='admin/add_cate.php'>add-product</a></td>
 </tr>
     </table>
       </div>

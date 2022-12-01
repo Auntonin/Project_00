@@ -7,9 +7,7 @@
     <title>sing-up</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link href="../bootstrap/css/signin.css" rel="stylesheet">
-</head>
-<body>
-<style>
+    <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -24,6 +22,9 @@
         }
       }
     </style>
+</head>
+<body>
+<div class="container">
 
     <form class="form-signup" action="adduser.php" method="post">
 
@@ -58,6 +59,6 @@ echo "<center><a type='button' class='btn btn-outline-primary me-2' href='../log
 
 
 
-
+</div>
 </body>
 </html>
