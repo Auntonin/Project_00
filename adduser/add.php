@@ -26,7 +26,7 @@
 <body>
 <div class="container">
 
-    <form class="form-signup" action="adduser.php" method="post">
+    <form class="form-signin" action="adduser.php" method="post">
 
 <h1 class="h3 mb-3 fw-normal">Please Sign Up</h1>
 
@@ -58,7 +58,7 @@ echo "<center><a type='button' class='btn btn-outline-primary me-2' href='../log
 <br>
 
 
-
+<script src="../bootstrap/js/bootstrap.min.js" ></script>
 </div>
 </body>
 </html>

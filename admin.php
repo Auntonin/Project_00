@@ -30,17 +30,18 @@ if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
         </tr>
         
         <?php
-$sql = "SELECT * FROM category";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) 
+$sql="SELECT * FROM category ORDER BY cate_name";
+$result=$conn->query($sql);
+while($rs=$result->fetch_array())
   {
     ?>
         <tr>
+           
+         
+          <td> <?=  $cn=$rs['cate_name'];?> </td>
+          <td> <?= $cid=$rs['cate_id'];?> </td>
+          <td> <?php  echo "<a type='button' class='btn btn-outline-primary me-2' href='admin/edit_cate.php?cate_id=$cid'>edit</a></td>"; ?></td>
             
-            <td><?=$row['cate_name']?></td>
-            <td><a type='button' class='btn btn-outline-primary me-2' href='admin/edit_cate.php?id=<?=$row['p_type']?>'>edit</a></td>
-
            
         </tr>
     <?php
@@ -63,8 +64,5 @@ if ($result->num_rows > 0) {
 <script src="bootstrap/js/bootstrap.min.js" ></script>
         </body>
         </html>
-        <?php
-    }
-   
-?>
+        
 
