@@ -44,9 +44,15 @@
     </div>
     <br>
     
-    <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Sign in</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Sign-in</button>
+    <br>
+<?php
+echo "<br>";
+echo "<a type='button' class='btn btn-outline-primary me-2' href='../adduser/add.php'>Sing-up</a>";
+?>
   </form>
-<br>
+
+
 
 
 

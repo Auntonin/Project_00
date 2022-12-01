@@ -24,7 +24,7 @@ if($result->num_rows == 1)
     
     else if($rs['user_level'] == 0)
     {
-        header("location: ../edit_product.php");
+        header("location: ../admin.php");
     }
     
     else

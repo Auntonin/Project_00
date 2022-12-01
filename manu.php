@@ -17,7 +17,7 @@
     if(isset($_SESSION["login_name"])) {
         
       echo "<strong> $_SESSION[login_name] </strong>"." ";
-        echo "<a type='button' class='btn btn-outline-primary me-2' href='logout.php'>Logout</a>";
+      echo "<a type='button' class='btn btn-outline-primary me-2' href='logout.php'>Logout</a>";
         
     }
     else{

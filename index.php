@@ -34,7 +34,7 @@ if ($result->num_rows > 0) {
     ?>
         <tr>
             <!-- <td><?=$row['product_id_type']?></td> -->
-            <td><?=$row['product_type']?></td>
+            <td><?=$row['p_type']?></td>
            
         </tr>
     <?php
