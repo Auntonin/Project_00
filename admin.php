@@ -65,6 +65,10 @@ if ($result->num_rows > 0) {
         </html>
         <?php
     }
+else
+{
+  header("location: index.php");
+}
    
 ?>
 

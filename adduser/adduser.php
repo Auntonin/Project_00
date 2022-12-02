@@ -16,7 +16,7 @@ else
 
     if(trim($uname)!= "")
     {
-    $sql="INSERT INTO user VALUES(0,'$uname','$upasswd','$firstname','$lastname','1')";
+    $sql="INSERT INTO user VALUES(0,'$uname','".md5($upasswd)."','$firstname','$lastname','1')";
     if($conn->query($sql))
     {
         $_SESSION["login_name"]=$uname;

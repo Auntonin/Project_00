@@ -63,7 +63,7 @@ if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
 <?php
 }
 else{
-    header('location: ../login/login.php');
+    header('location: ../login/index.php');
 
 }
 ?>

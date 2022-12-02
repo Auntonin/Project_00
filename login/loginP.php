@@ -6,7 +6,7 @@ $upasswd=$_POST['Password'];
 $_SESSION['login_name']="";
 
 
-$sql="SELECT * FROM user WHERE user_name='$uname' AND user_password='$upasswd' ";
+$sql="SELECT * FROM user WHERE user_name='$uname' AND user_password='".md5($upasswd)."' ";
 
 $result=$conn->query($sql);
 if($result->num_rows == 1)
@@ -35,7 +35,6 @@ if($result->num_rows == 1)
 }
 else
 {
-    echo "No!";
     header("location: login.php");
 }
 ?>
