@@ -34,7 +34,7 @@ if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
 <body>
     <div class="container">
 
-        <form class="form-signup" action="" method="post">
+        <form class="form " action="" method="post">
             <div class="form-inline">
                 <label for="cate_name">ประเภทสินค้า</label>
                 <input type="text" class="form-control" name="cate_name" id="cate_name" placeholder="กรุณาป้อนชื่อประเภทสินค้า">
