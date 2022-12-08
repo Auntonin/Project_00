@@ -1,23 +1,19 @@
 <?php
 session_start();
-if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
-{
+if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
     require_once('../condb.php');
-    if(isset($_POST['cate_name']) && trim($_POST['cate_name']) != "")
-    {   $id=$_POST['cate_id'];
-        $cn=trim($_POST['cate_name']);
-        $sql="SELECT cate_name FROM category WHERE cate_id = '".$id."'";
-        $result=$conn->query($sql);
-        if($result->num_rows==1)
-        {
-            
-            $sql="UPDATE category SET cate_name = '".$cn."' WHERE cate_id=$id";
-            $result=$conn->query($sql);
+    if (isset($_POST['cate_name']) && trim($_POST['cate_name']) != "") {
+        $id = $_POST['cate_id'];
+        $cn = trim($_POST['cate_name']);
+        $sql = "SELECT cate_name FROM category WHERE cate_id = '" . $id . "'";
+        $result = $conn->query($sql);
+        if ($result->num_rows == 1) {
+
+            $sql = "UPDATE category SET cate_name = '" . $cn . "' WHERE cate_id=$id";
+            $result = $conn->query($sql);
             alert('OK\nแก้ไขสำเร็จ');
             header("location: add_cate.php");
-        }
-        else
-        {
+        } else {
             alert("เฮ้ย! ชื่อประเภทสินค้ามีอยู่แล้ว");
         }
     }
@@ -34,22 +30,24 @@ if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
     <link href="../bootstrap/css/signin.css" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
     <div class="container">
-    <?php
-        $cid=$_GET['cate_id'];
-        $sql="SELECT * FROM category WHERE cate_id=$cid";
-        $result=$conn->query($sql);
-        $rs=$result->fetch_array();
-        $cid=$rs['cate_id'];
-        $cn=$rs['cate_name'];
-      
+        <?php
+    $cid = $_GET['cate_id'];
+    $sql = "SELECT * FROM category WHERE cate_id=$cid";
+    $result = $conn->query($sql);
+    $rs = $result->fetch_array();
+    $cid = $rs['cate_id'];
+    $cn = $rs['cate_name'];
+
         ?>
         <form class="form-signin" action="" method="post">
             <div class="form-inline">
                 <label for="cate_name">ประเภทสินค้า</label>
-                <input type="text" class="form-control" name="cate_name" id="cate_name" placeholder="กรุณาป้อนชื่อประเภทสินค้า" value="<?=$cn?>">
-                <input type="hidden" name="cate_id" value="<?=$cid?>">
+                <input type="text" class="form-control" name="cate_name" id="cate_name"
+                    placeholder="กรุณาป้อนชื่อประเภทสินค้า" value="<?= $cn ?>">
+                <input type="hidden" name="cate_id" value="<?= $cid ?>">
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Add</button>
             <br>
@@ -61,9 +59,8 @@ if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
 
 </html>
 <?php
-}
-else{
-    header('location: ../login/index.php');
+} else {
+    header('location: ../login/login.php');
 
 }
 ?>

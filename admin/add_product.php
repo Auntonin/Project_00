@@ -62,7 +62,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
     while ($rs = $result->fetch_array()) {
         $pid = $rs['product_id'];
         $pn = $rs['product_name'];
-        echo "<br>$pid ==> <a href='edit_cate.php?cate_id=$pid'>$pn</a>";
+        echo "<br>$pid ==> <a href='edit_product.php?product_id=$pid'>$pn</a>";
     }
         ?>
 

@@ -20,7 +20,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
   <div class="container">
     <!-- nav bar -->
     <?php
-  require_once("manu.php")
+  require_once("menu.php")
       ?>
     <div class="alert alert-primary" role="alert">Product</div>
     <table class="table table-striped">
@@ -61,7 +61,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
       <?php
   }
 } else {
-  echo "0 results";
+
 }
 $conn->close();
       ?>

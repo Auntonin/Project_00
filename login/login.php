@@ -20,7 +20,6 @@ if (isset($_SESSION['login_naem'])) {
     $_SESSION['login_name'] = $rs['user_name'];
     $_SESSION['full_name'] = $rs['user_firstname'] . " " . $rs['user_lastname'];
     
-
     if ($rs['user_level'] == 1) {
       header("location: ../index.php");
     } else if ($rs['user_level'] == 0) {
@@ -52,7 +51,7 @@ if (isset($_SESSION['login_naem'])) {
   <title>Signin</title>
   <!-- CSS only -->
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-  <link href="../bootstrap/css/signin.css" rel="stylesheet">
+  <link  rel="stylesheet" href="../bootstrap/css/signin.css">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
