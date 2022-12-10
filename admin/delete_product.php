@@ -1,5 +1,4 @@
 <?php
-use LDAP\Result;
 session_start();
 if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
     require_once('../condb.php');
