@@ -9,6 +9,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
             $sql = "INSERT INTO category(cate_name) VALUES('" . trim($_POST['cate_name']) . "')";
             $result = $conn->query($sql);
             alert('OK\nสำเร็จ');
+            header("loaction:../admin.php");
         } else {
             alert("เฮ้ย! ชื่อประเภทสินค้ามีอยู่แล้ว");
         }
@@ -27,27 +28,22 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
     <title>Document</title>
 </head>
 
-<body>
+<body class="text-center">
     <div class="container">
 
-        <form class="form " action="" method="post">
+        <form class="form-signin" action="" method="post">
             <div class="form-inline">
                 <label for="cate_name">ประเภทสินค้า</label>
                 <input type="text" class="form-control" name="cate_name" id="cate_name"
                     placeholder="กรุณาป้อนชื่อประเภทสินค้า">
             </div>
+            <br>    
             <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Add</button>
-            <br>
+            
+            <br><br>
+            <a type='button' class='btn btn-outline-primary me-2' href="../admin.php">Close</a>
         </form>
-        <?php
-    $sql = "SELECT * FROM category ORDER BY cate_name";
-    $result = $conn->query($sql);
-    while ($rs = $result->fetch_array()) {
-        $cid = $rs['cate_id'];
-        $cn = $rs['cate_name'];
-        echo "<br>$cid ==> <a href='edit_cate.php?cate_id=$cid'>$cn</a>";
-    }
-        ?>
+      
 
     </div>
 </body>

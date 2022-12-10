@@ -29,12 +29,17 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
         <th>ประเภทสินค้า</th>
         <th>ราคาสินค้า</th>
         <th>จำนวนสินค้า</th>
+        <th>แก้ไข,ลบ</th>
       </tr>
       <?php
-  $sql = "SELECT * FROM products ORDER BY product_name";
+  $sql = "SELECT p.*,c.cate_name 
+  FROM products p 
+  INNER JOIN category c ON p.cate_id = c.cate_id 
+  ORDER BY product_name";
   $result = $conn->query($sql);
   while ($rs = $result->fetch_array()) {
     $cid = $rs['cate_id'];
+    $pid = $rs['product_id'];
       ?>
 
       <tr>
@@ -43,10 +48,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
         </td>
         <td>
           <?php
-    $sqli = "SELECT cate_name FROM category WHERE cate_id = '" . $cid . "'";
-    $resulti = $conn->query($sqli);
-    $rsi = $resulti->fetch_array();
-    echo $rsi['cate_name'];
+    echo $rs['cate_name'];
           ?>
         </td>
         <td>
@@ -55,22 +57,34 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
         <td>
           <?= $rs['product_qty']; ?>
         </td>
+        <td>
+          <?php
+    echo "<a type='button'  class='btn btn-outline-primary ' href='admin/edit_product.php?product_id=$pid'>EDIT</a>";
+    echo " ";
+    echo "<a type='button'  class='btn btn-primary ' href='admin/delete_product.php?product_id=$pid'>DELETE</a>";
+          ?>
+        </td>
+
       </tr>
 
 
       <?php
   }
-} else {
 
-}
-$conn->close();
+
+
+
       ?>
-  
-        <td><a type='button' class='btn btn-outline-primary me-2' href='admin/add_product.php'>add-product</a>
+
+      <td><a type='button' class='btn btn-outline-primary me-2' href='admin/add_product.php'>add-product</a>
       </td>
-<td><a type='button' class='btn btn-outline-primary me-2' href='admin/add_cate.php'>add-caetgory</a></td>
-<td></td>
-<td></td>
+      <td>
+        <a type='button' class='btn btn-outline-primary me-2' href='admin/add_cate.php'>add-caetgory</a>
+        <a type='button' class='btn btn-primary ' href='admin/delete_cate.php?caet_id=$pid'>DELETE</a>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
   </div>
 
   <!-- JavaScript Bundle with Popper -->
@@ -78,3 +92,12 @@ $conn->close();
 </body>
 
 </html>
+<?php
+
+  $conn->close();
+}
+else{
+    header('location: ../login/index.php');
+
+}
+?>

@@ -22,35 +22,57 @@ require_once "condb.php";
     <?php
     require_once("menu.php")
       ?>
-    <table border="1">
+    <div class="alert alert-primary" role="alert">Product</div>
+    <table class="table table-striped">
       <tr>
-
-        <td>category</td>
+        <th>ชื่อสินค้า</th>
+        <th>ประเภทสินค้า</th>
+        <th>ราคาสินค้า</th>
+        <th>จำนวนสินค้า</th>
+        <th>สั่งซื้อสินค้า</th>
       </tr>
       <?php
-        $sql = "SELECT * FROM category";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-        ?>
+      $sql = "SELECT p.*,c.cate_name 
+              FROM products p 
+              INNER JOIN category c ON p.cate_id = c.cate_id 
+              ORDER BY product_name";
+      $result = $conn->query($sql);
+      while ($rs = $result->fetch_array()) {
+        $cn = $rs['cate_name'];
+        $pid = $rs['product_id'];
+      ?>
+
       <tr>
         <td>
-          <<= $row['cate_id'] ?>
+          <?= $rs['product_name']; ?>
         </td>
         <td>
-          <?= $row['cate_name'] ?>
+          <?=$rs['cate_name']?>
         </td>
-
+        <td>
+          <?= $rs['product_price']; ?>
+        </td>
+        <td>
+          <?= $rs['product_qty']; ?>
+        </td>
+        <td>
+          <form action="order/buy.php" method="post">
+          <button type="submit" name="product_buy" value="<?=$pid?>"class='btn btn-outline-primary me-2' >buy</button>
+          </form>
+        </td>
       </tr>
+
+
       <?php
-          }
-        } else {
-          echo "0 results";
-        }
-        $conn->close();
-        ?>
-    </table>
+      }
+
+    
+
+      $conn->close();
+      ?>
+
   </div>
+ 
 
 
 

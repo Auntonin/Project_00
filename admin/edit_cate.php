@@ -31,7 +31,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
     <title>Document</title>
 </head>
 
-<body>
+<body class="text-center">
     <div class="container">
         <?php
     $cid = $_GET['cate_id'];
@@ -49,7 +49,11 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
                     placeholder="กรุณาป้อนชื่อประเภทสินค้า" value="<?= $cn ?>">
                 <input type="hidden" name="cate_id" value="<?= $cid ?>">
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Add</button>
+            <br>
+            <button class="w-100 btn btn-lg btn-outline-primary" type="submit" value="ok">Add</button>
+            <br><br>
+            <a type='button' class='btn btn-primary me-2' href="../admin.php">Close</a>
+           
             <br>
         </form>
 
