@@ -8,13 +8,14 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
         $sql = "SELECT cate_name FROM category WHERE cate_id = '" . $id . "'";
         $result = $conn->query($sql);
         if ($result->num_rows == 1) {
-
+            
             $sql = "UPDATE category SET cate_name = '" . $cn . "' WHERE cate_id=$id";
             $result = $conn->query($sql);
             alert('OK\nแก้ไขสำเร็จ');
-            header("location: add_cate.php");
+            header("location: ../admin.php");
         } else {
             alert("เฮ้ย! ชื่อประเภทสินค้ามีอยู่แล้ว");
+            
         }
     }
 
@@ -52,8 +53,8 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
             <br>
             <button class="w-100 btn btn-lg btn-outline-primary" type="submit" value="ok">Add</button>
             <br><br>
-            <a type='button' class='btn btn-primary me-2' href="../admin.php">Close</a>
-           
+            <a type='button' class='btn btn-primary me-2' href="delete_cate.php">Close</a>
+
             <br>
         </form>
 
@@ -64,7 +65,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
 </html>
 <?php
 } else {
-    header('location: ../login/login.php');
+    header('location: ../index.php');
 
 }
 ?>

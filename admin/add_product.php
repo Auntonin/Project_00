@@ -54,9 +54,9 @@ if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
                     ?>
                 
                 </select>
-                <input type="text" name="product_name" require>
-                <input type="number" name="product_price" min="1" max="1000" require>
-                <input type="number" name="product_qty" min="1" require>
+                <input type="text" name="product_name" placeholder="ชิ่อสินค้า" require>
+                <input type="number" name="product_price" min="1" max="1000" placeholder="ราคา" require>
+                <input type="number" name="product_qty" placeholder="จำนวน" min="1" require>
             </div>
             <br>
             <button class="w-50 btn btn-lg btn-primary" type="submit" value="ok">Add</button>

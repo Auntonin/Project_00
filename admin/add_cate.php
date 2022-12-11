@@ -37,13 +37,13 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
                 <input type="text" class="form-control" name="cate_name" id="cate_name"
                     placeholder="กรุณาป้อนชื่อประเภทสินค้า">
             </div>
-            <br>    
+            <br>
             <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Add</button>
-            
+
             <br><br>
             <a type='button' class='btn btn-outline-primary me-2' href="../admin.php">Close</a>
         </form>
-      
+
 
     </div>
 </body>

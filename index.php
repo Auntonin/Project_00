@@ -2,7 +2,6 @@
 session_start();
 require_once "condb.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,3 +81,4 @@ require_once "condb.php";
 </body>
 
 </html>
+

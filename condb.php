@@ -10,11 +10,21 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+?>
+   <!-- sweetalert -->
+   <script src="sweetalert/dist/sweetalert2.all.min.js"></script>
 
+<?php
 function alert($txt)
-{
+{?>
 
-  echo "<script> alert('" . $txt . "'); </script>";
+ <script> Swal.fire(
+  '<?=$txt?>',
+  'You clicked the button!',
+  '<a href="index.php">"success"</a>'
+) </script>
 
+  <?php
 }
 ?>
+ 

@@ -14,9 +14,12 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
   <title>admin</title>
   <!-- CSS only -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+
 </head>
 
 <body>
+
   <div class="container">
     <!-- nav bar -->
     <?php
@@ -34,7 +37,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
       <?php
   $sql = "SELECT p.*,c.cate_name 
   FROM products p 
-  INNER JOIN category c ON p.cate_id = c.cate_id 
+  LEFT JOIN category c ON p.cate_id = c.cate_id 
   ORDER BY product_name";
   $result = $conn->query($sql);
   while ($rs = $result->fetch_array()) {
@@ -80,15 +83,19 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
       </td>
       <td>
         <a type='button' class='btn btn-outline-primary me-2' href='admin/add_cate.php'>add-caetgory</a>
-        <a type='button' class='btn btn-primary ' href='admin/delete_cate.php?caet_id=$pid'>DELETE</a>
+        <a type='button' class='btn btn-primary ' href='admin/delete_cate.php?caet_id=$pid'>EDIT-DELETE</a>
       </td>
       <td></td>
       <td></td>
       <td></td>
   </div>
 
+
+    <!-- sweetalert -->
+    <script src="sweetalert/dist/sweetalert2.all.min.js"></script>
   <!-- JavaScript Bundle with Popper -->
   <script src="bootstrap/js/bootstrap.min.js"></script>
+  
 </body>
 
 </html>
@@ -97,7 +104,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
   $conn->close();
 }
 else{
-    header('location: ../login/index.php');
+    header('location: index.php');
 
 }
-?>
+?>  
