@@ -4,16 +4,26 @@ if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
 {
     require_once('../condb.php');
     if(isset($_POST['product_name']) && trim($_POST['product_name']) != "")
-    {
+    {   
         $cate_id = $_POST['cate_id'];
         $product_qty=$_POST['product_qty'];
         $product_price=$_POST['product_price'];
+
+        if (is_uploaded_file($_FILES['file_p']['tmp_name'])) {
+            $new_image_name = 'pro_'.uniqid().".".pathinfo(basename($_FILES['file_p']['name']), PATHINFO_EXTENSION);
+            $image_upload_path = "./img/product/".$new_image_name;
+            move_uploaded_file($_FILES['file_p']['tmp_name'],$image_upload_path);
+            } else {
+            $new_image_name = "";
+            }
+
+      
         $sql="SELECT product_name FROM products WHERE product_name = '".trim($_POST['product_name'])."'";
       
         $result=$conn->query($sql);
         if($result->num_rows==0)
         {
-            $sql="INSERT INTO products VALUES(0,$cate_id,'".trim($_POST['product_name'])."',".$product_price.",".$product_qty.")";
+            $sql="INSERT INTO products VALUES(0,$cate_id,'".trim($_POST['product_name'])."',".$product_price.",".$product_qty.",'$new_image_name')";
            $result=$conn->query($sql);
           
              alert('OK\nสำเร็จ');
@@ -40,7 +50,7 @@ if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
 <body class="text-center">
     <div class="container">
 
-        <form class="form " action="" method="post">
+        <form class="form " action="" method="post" enctype="multipart/form-data">
             <div class="form-inline">
                 <label for="cate_id">ประเภทสินค้า</label>
                 <select name="cate_id" id="cate_id">
@@ -57,6 +67,9 @@ if(isset($_SESSION['user_level']) && $_SESSION['user_level']==0)
                 <input type="text" name="product_name" placeholder="ชิ่อสินค้า" require>
                 <input type="number" name="product_price" min="1" max="1000" placeholder="ราคา" require>
                 <input type="number" name="product_qty" placeholder="จำนวน" min="1" require>
+                <br>
+                <input type="file" name="file_p" require>
+
             </div>
             <br>
             <button class="w-50 btn btn-lg btn-primary" type="submit" value="ok">Add</button>

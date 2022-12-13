@@ -31,6 +31,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
     <table class="table table-striped">
       <tr>
         <th>ชื่อสินค้า</th>
+        <th>รูปสินค้า</th>
         <th>ประเภทสินค้า</th>
         <th>ราคาสินค้า</th>
         <th>จำนวนสินค้า</th>
@@ -50,6 +51,9 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
       <tr>
         <td>
           <?= $rs['product_name']; ?>
+        </td>
+        <td>
+          <img src="img/product/<?= $rs['image'] ?>" width="120" height="80" >
         </td>
         <td>
           <?php
@@ -85,6 +89,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
 
       <td><a type='button' class='btn btn-outline-primary me-2' href='admin/add_product.php'>add-product</a>
       </td>
+      <td></td>
       <td>
         <a type='button' class='btn btn-outline-primary me-2' href='admin/add_cate.php'>add-caetgory</a>
         <a type='button' class='btn btn-primary ' href='admin/delete_cate.php?caet_id=$pid'>EDIT-DELETE</a>

@@ -2,6 +2,7 @@
 session_start();
 require_once "condb.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,9 +32,9 @@ require_once "condb.php";
         <th>สั่งซื้อสินค้า</th>
       </tr>
       <?php
-      $sql = "SELECT p.*,c.cate_name 
-              FROM products p 
-              INNER JOIN category c ON p.cate_id = c.cate_id 
+      $sql = "SELECT p.*,c.cate_name
+              FROM products p INNER JOIN category c 
+              ON p.cate_id = c.cate_id 
               ORDER BY product_name";
       $result = $conn->query($sql);
       while ($rs = $result->fetch_array()) {
@@ -55,8 +56,8 @@ require_once "condb.php";
           <?= $rs['product_qty']; ?>
         </td>
         <td>
-          <form action="order/buy.php" method="post">
-          <button type="submit" name="product_buy" value="<?=$pid?>"class='btn btn-outline-primary me-2' >buy</button>
+          <form action="buy/buy.php" method="post">
+          <a type="submit" name="product_order" href="order/order.php?p_id=<?=$pid?>"class='btn btn-outline-primary me-2' >add to cart</a>
           </form>
         </td>
       </tr>
@@ -81,4 +82,3 @@ require_once "condb.php";
 </body>
 
 </html>
-

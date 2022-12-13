@@ -18,11 +18,7 @@ if ($conn->connect_error) {
 function alert($txt)
 {?>
 
- <script> Swal.fire(
-  '<?=$txt?>',
-  'You clicked the button!',
-  '<a href="index.php">"success"</a>'
-) </script>
+ <script> alert($txt);</script>
 
   <?php
 }
