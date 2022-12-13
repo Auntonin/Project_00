@@ -14,11 +14,13 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
   <title>admin</title>
   <!-- CSS only -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-
+    <!-- sweetalert -->
+    <script src="sweetalert/dist/sweetalert2.all.min.js"></script>
 
 </head>
 
 <body>
+
 
   <div class="container">
     <!-- nav bar -->
@@ -64,8 +66,10 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
           <?php
     echo "<a type='button'  class='btn btn-outline-primary ' href='admin/edit_product.php?product_id=$pid'>EDIT</a>";
     echo " ";
-    echo "<a type='button'  class='btn btn-primary ' href='admin/delete_product.php?product_id=$pid'>DELETE</a>";
+    echo "<a  type='button'  class='btn btn-primary 'href='admin/delete_product.php?product_id=$pid'>DELETE</a>";
+       
           ?>
+
         </td>
 
       </tr>
@@ -89,10 +93,26 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
       <td></td>
       <td></td>
   </div>
+<script>
+// function ConfirmDelete()
+// {
+//   Swal.fire({
+//   title: 'Are you sure?',
+//   text: "You won't be able to revert this!",
+//   icon: 'warning',
+//   showCancelButton: true,
+//   confirmButtonColor: '#3085d6',
+//   cancelButtonColor: '#d33',
+//   confirmButtonText: '<a 'href=admin/delete_product.php?product_id=<?=$pid?>'>DELETE</a>'
+// }).then((result) => {
+//   if (result.isConfirmed) {
+//     url =""
+//   }
+// })
+// }
+// </script>
 
 
-    <!-- sweetalert -->
-    <script src="sweetalert/dist/sweetalert2.all.min.js"></script>
   <!-- JavaScript Bundle with Popper -->
   <script src="bootstrap/js/bootstrap.min.js"></script>
   
