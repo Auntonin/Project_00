@@ -14,8 +14,8 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
   <title>admin</title>
   <!-- CSS only -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <!-- sweetalert -->
-    <script src="sweetalert/dist/sweetalert2.all.min.js"></script>
+  <!-- sweetalert -->
+  <script src="sweetalert/dist/sweetalert2.all.min.js"></script>
 
 </head>
 
@@ -53,7 +53,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
           <?= $rs['product_name']; ?>
         </td>
         <td>
-          <img src="img/product/<?= $rs['image'] ?>" width="120" height="80" >
+          <img src="img/product/<?= $rs['image'] ?>" width="120" height="80">
         </td>
         <td>
           <?php
@@ -71,7 +71,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
     echo "<a type='button'  class='btn btn-outline-primary ' href='admin/edit_product.php?product_id=$pid'>EDIT</a>";
     echo " ";
     echo "<a  type='button'  class='btn btn-primary 'href='admin/delete_product.php?product_id=$pid'>DELETE</a>";
-       
+
           ?>
 
         </td>
@@ -98,7 +98,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
       <td></td>
       <td></td>
   </div>
-<script>
+  <script>
 // function ConfirmDelete()
 // {
 //   Swal.fire({
@@ -108,7 +108,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
 //   showCancelButton: true,
 //   confirmButtonColor: '#3085d6',
 //   cancelButtonColor: '#d33',
-//   confirmButtonText: '<a 'href=admin/delete_product.php?product_id=<?=$pid?>'>DELETE</a>'
+//   confirmButtonText: '<a 'href=admin/delete_product.php?product_id=<?= $pid ?>'>DELETE</a>'
 // }).then((result) => {
 //   if (result.isConfirmed) {
 //     url =""
@@ -120,16 +120,15 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
 
   <!-- JavaScript Bundle with Popper -->
   <script src="bootstrap/js/bootstrap.min.js"></script>
-  
+
 </body>
 
 </html>
 <?php
 
   $conn->close();
-}
-else{
-    header('location: index.php');
+} else {
+  header('location: index.php');
 
 }
-?>  
+?>

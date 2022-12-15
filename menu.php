@@ -8,15 +8,18 @@
         <li><a href="index.php" class="nav-link px-2 link-dark">Shop</a></li>
         <li><a href="order/cart.php" class="nav-link px-2 link-dark">Cart</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">Contact</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
      
         <?php
     if(isset($_SESSION["login_name"])) {
-        
       echo "<strong> $_SESSION[login_name] </strong>";
+          if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
+            echo "<a type='button' class='btn btn-outline-primary me-2' href='admin.php'>admin</a>";
+          }
+      
       echo "<a type='button' class='btn btn-outline-primary me-2' href='logout.php'>Logout</a>";
         
     }

@@ -9,19 +9,13 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
         $cid = $_POST['cate_id'];
         $pqty = $_POST['product_qty'];
 
-        if (is_uploaded_file($_FILES['file_p']['tmp_name'])) {
-            $new_image_name = 'pro_'.uniqid().".".pathinfo(basename($_FILES['file_p']['name']), PATHINFO_EXTENSION);
-            $image_upload_path = "./img/product/".$new_image_name;
-            move_uploaded_file($_FILES['file_p']['tmp_name'],$image_upload_path);
-            } else {
-            $new_image_name = "";
-            }
+       
 
         $sql = "SELECT product_name FROM products WHERE product_id = '" . $pid . "'";
         $result = $conn->query($sql);
         if ($result->num_rows == 1) {
 
-            $sql = "UPDATE products SET cate_id = '" . $cid . "',product_name = '" . $pn . "',product_price = '" . $pp . "',product_qty = '" . $pqty . "',image = '".$new_image_name."' WHERE product_id=$pid";
+            $sql = "UPDATE products SET cate_id = '" . $cid . "',product_name = '" . $pn . "',product_price = '" . $pp . "',product_qty = '" . $pqty . "',image = '".i."' WHERE product_id=$pid";
             $result = $conn->query($sql);
             alert('OK\nแก้ไขสำเร็จ');
             header("location: ../admin.php");
