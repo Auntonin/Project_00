@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once('../condb.php');
-// $pid = $_GET['p_id'];
+if (isset($_SESSION['login_name'])) {
+      require_once('../condb.php');
+      // $pid = $_GET['p_id'];
 // $sql = "SELECT * FROM product WHERE product_id='$pid' ";
 // $result = $conn->query($sql);
 // $rs = $result->fetch_array();
@@ -23,7 +24,7 @@ require_once('../condb.php');
    
     <div class="container">
     <?php
-    require_once('../menu.php');
+      require_once('../menu.php');
     ?>
         <form action="" method="POST">
             <div class="row">
@@ -58,3 +59,9 @@ require_once('../condb.php');
 </body>
 
 </html>
+<?php
+}
+else{
+      header('location:../login/login.php');
+}
+?>

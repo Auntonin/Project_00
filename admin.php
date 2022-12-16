@@ -38,8 +38,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
         <th>แก้ไข,ลบ</th>
       </tr>
       <?php
-  $sql = "SELECT p.*,c.cate_name 
-  FROM products p 
+  $sql = "SELECT p.*,c.cate_name FROM products p 
   LEFT JOIN category c ON p.cate_id = c.cate_id 
   ORDER BY product_name";
   $result = $conn->query($sql);
