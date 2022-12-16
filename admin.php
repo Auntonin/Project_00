@@ -53,7 +53,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
           <?= $rs['product_name']; ?>
         </td>
         <td>
-          <img src="img/product/<?= $rs['image'] ?>" width="120" height="80">
+          <img src="img/product/<?= $rs['images'] ?>" width="120" height="80">
         </td>
         <td>
           <?php
