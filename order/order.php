@@ -12,13 +12,14 @@ if(!isset($_SESSION["intLine"]))
 else
 {
 	
-	$key = ($_GET["p_id"]);
+	$key = array_search($_GET["p_id"], $_SESSION["strProductID"]);
 	if((string)$key != "")
 	{
 		 $_SESSION["strQty"][$key] = $_SESSION["strQty"][$key] + 1;
 	}
 	else
 	{
+		
 		 $_SESSION["intLine"] = $_SESSION["intLine"] + 1;
 		 $intNewLine = $_SESSION["intLine"];
 		 $_SESSION["strProductID"][$intNewLine] = $_GET["p_id"];
