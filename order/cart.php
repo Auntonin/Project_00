@@ -1,13 +1,16 @@
 <?php
 session_start();
-if (isset($_SESSION['login_name'])) {
+if (isset($_SESSION['login_name'])) 
+{
   require_once('../condb.php');
-  //รับ id สินค้า
-  $pid = $_GET['p_id'];
-  $sql = "SELECT * FROM product WHERE product_id='$pid' ";
-  $result = $conn->query($sql);
-  $rs = $result->fetch_array();
-?>
+  if (isset($_SESSION["intLine"]) != "")
+   {
+    //รับ id สินค้า
+    // $pid = $_GET['p_id'];
+    // $sql = "SELECT * FROM product WHERE product_id='$pid' ";
+    // $result = $conn->query($sql);
+    // $rs = $result->fetch_array();
+    ?>
 
   <!DOCTYPE html>
   <html lang="en">
@@ -50,7 +53,7 @@ if (isset($_SESSION['login_name'])) {
               echo "<a type='button' class='btn btn-outline-primary me-2' href='admin.php'>admin</a>";
             }
 
-            echo "<a type='button' class='btn btn-outline-primary me-2' href='logout.php'>Logout</a>";
+            echo "<a type='button' class='btn btn-outline-primary me-2' href='../logout.php'>Logout</a>";
           } else {
 
             echo "<a type='button' class='btn btn-outline-primary me-2' href='login/login.php'>Login</a>";
@@ -61,22 +64,10 @@ if (isset($_SESSION['login_name'])) {
       <!-- end_nav_bar -->
 
 
-      <?php
-      $Total = 0;
-      $sumPrice = 0;
-      $m = 1;
-      for ($i = 0; $i <= (int)$_SESSION["intLine"]; $i++) {
-        if( $_SESSION["strProductID"][$i]) != ""){
-          $sql1 = "SELECT * FROM product WHERE product_id='". $_SESSION["strProductID"][$i]."' ";
-          $result1=$conn->query($sql1);
-          $rs_pro= fetch_array($result1);
-        }
-
-      ?>
+     
         <form action="" method="POST">
           <div class="row">
             <div class="col-md -10">
-
               <table class="table table-hover">
 
                 <tr>
@@ -85,16 +76,48 @@ if (isset($_SESSION['login_name'])) {
                   <th>ราคา</th>
                   <th>จำนวน</th>
                   <th>ราคารวม</th>
+                  <th>ลบรายการ</th>
                 </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+
+                <?php
+                $Total = 0;
+                $sumall = 0;
+                $ord = 1;
+                $sumall = 0;
+                for ($i = 0; $i <= (int) $_SESSION["intLine"]; $i++) {
+                  if (($_SESSION["strProductID"][$i]) != "") {
+                    $sql1 = "SELECT * FROM products WHERE product_id='" . $_SESSION["strProductID"][$i] . "' ";
+                    $result1 = $conn->query($sql1);
+                    $rs_pro = $result1->fetch_array();
+
+                    $_SESSION["price"][$i] = $rs_pro['product_price'];
+                    $Total = $_SESSION["strQty"][$i];
+                    $sump = $Total * $_SESSION['price'][$i];
+                    $sumall = $sumall + $sump;
+                    ?>
+                                    <tr>
+                  <td><?= $ord ?></td>
+                  <td><?= $rs_pro['product_name'] ?></td>
+                  <td><?= $rs_pro['product_price'] ?></td>
+                  <td><?= $_SESSION["strQty"][$i] ?></td>
+                  <td><?= $sump ?></td>
+                  <td><a href="pro_delete.php?Line=<?= $i ?>">Delete</a></td>
                 </tr>
-              <?php }
-              ?>
+                    <?php
+                    $ord++;
+                  }
+                }
+                  ?>
+              <tr>
+                <td>รวมเป็นเงิน</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+                <td><?= $sumall ?></td>
+                <td>บาท</td>
+                
+              </tr>
               </table>
             </div>
           </div>
@@ -108,6 +131,9 @@ if (isset($_SESSION['login_name'])) {
 
   </html>
 <?php
+  }else{
+    header('location:../index.php');
+  }
 } else {
   header('location:../login/login.php');
 }

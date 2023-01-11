@@ -12,7 +12,8 @@ if(!isset($_SESSION["intLine"]))
 else
 {
 	
-	$key = array_search($_GET["p_id"], $_SESSION["strProductID"]);
+	$key = array_search($_GET["p_id"], $_SESSION["strProductID"]); 
+
 	if((string)$key != "")
 	{
 		 $_SESSION["strQty"][$key] = $_SESSION["strQty"][$key] + 1;
@@ -27,4 +28,6 @@ else
 	}
 	 header("location:cart.php");
 }
+
+
 ?>

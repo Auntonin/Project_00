@@ -16,11 +16,12 @@ if ($conn->connect_error) {
 
 <?php
 function alert($txt)
-{?>
-
- <script> alert($txt);</script>
-
-  <?php
+{
+  echo "<script> alert($txt);</script>";
 }
+function nl(){
+  echo "<br>";
+}
+
 ?>
  
