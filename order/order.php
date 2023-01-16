@@ -26,7 +26,7 @@ else
 		 $_SESSION["strProductID"][$intNewLine] = $_GET["p_id"];
 		 $_SESSION["strQty"][$intNewLine] = 1;
 	}
-	 header("location:cart.php");
+	 header("location:../cart.php");
 }
 
 

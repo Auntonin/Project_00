@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['login_name'])) 
 {
-  require_once('../condb.php');
+  require_once('condb.php');
   if (isset($_SESSION["intLine"]) != "")
    {
     //รับ id สินค้า
@@ -21,7 +21,7 @@ if (isset($_SESSION['login_name']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- CSS only -->
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   </head>
 
   <body>
@@ -29,38 +29,7 @@ if (isset($_SESSION['login_name']))
     <div class="container">
 
       <!-- nav_bar -->
-      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-            <use xlink:href="#bootstrap"></use>
-          </svg>
-        </a>
-
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="../index.php" class="nav-link px-2 link-secondary">Home</a></li>
-          <li><a href="../index.php" class="nav-link px-2 link-dark">Shop</a></li>
-          <li><a href="cart.php" class="nav-link px-2 link-dark">Cart</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Contact</a></li>
-        </ul>
-
-        <div class="col-md-3 text-end">
-
-          <?php
-          if (isset($_SESSION["login_name"])) {
-            echo "<strong> $_SESSION[login_name] </strong>";
-            if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
-              echo "<a type='button' class='btn btn-outline-primary me-2' href='admin.php'>admin</a>";
-            }
-
-            echo "<a type='button' class='btn btn-outline-primary me-2' href='../logout.php'>Logout</a>";
-          } else {
-
-            echo "<a type='button' class='btn btn-outline-primary me-2' href='login/login.php'>Login</a>";
-            echo "<a type='button' class='btn btn-primary' href='adduser/add.php'>Sign-up</a>";
-          }
-          ?>
-      </header>
+   <?php require_once('menu.php') ;?>
       <!-- end_nav_bar -->
 
 
@@ -101,7 +70,7 @@ if (isset($_SESSION['login_name']))
                   <td><?= $rs_pro['product_price'] ?></td>
                   <td><?= $_SESSION["strQty"][$i] ?></td>
                   <td><?= $sump ?></td>
-                  <td><a href="pro_delete.php?Line=<?= $i ?>">Delete</a></td>
+                  <td><a href="order/pro_delete.php?Line=<?= $i ?>">Delete</a></td>
                 </tr>
                     <?php
                     $ord++;
@@ -123,7 +92,7 @@ if (isset($_SESSION['login_name']))
           </div>
         </form>
         <div style="text-align:right">
-          <a href="../index.php"><button type="button" class="btn btn-outline-primary me-2">เลือกสินค้า</button></a>
+          <a href="index.php"><button type="button" class="btn btn-outline-primary me-2">เลือกสินค้า</button></a>
           <button type="button" class="btn btn-primary me-2">ยืนยันคำสั่งซื้อ</button>
         </div>
     </div>
@@ -132,9 +101,9 @@ if (isset($_SESSION['login_name']))
   </html>
 <?php
   }else{
-    header('location:../index.php');
+    header('location:index.php');
   }
 } else {
-  header('location:../login/login.php');
+  header('location:login/login.php');
 }
 ?>

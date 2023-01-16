@@ -57,7 +57,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
                   $sql = "UPDATE products SET cate_id = '" . $cid . "',product_name = '" . $pn . "',product_price = '" . $pp . "',product_qty = '" . $pqty . "' WHERE product_id=$pid";
                   $result = $conn->query($sql);
                   alert('OK\nแก้ไขสำเร็จ');
-                  // header("location: ../admin.php");
+                  header("location: ../admin.php");
             } else {
                   alert("เฮ้ย! ชื่อสินค้ามีอยู่แล้ว");
             }
@@ -107,7 +107,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
 
                                     ?>
                               </select>
-                              <input type="number" name="product_price" placeholder="ราคา" value="<?= $pp ?>" min="1" max="1000" require>
+                              <input type="number" name="product_price" placeholder="ราคา" value="<?= $pp ?>" min="1" require>
                               <input type="number" name="product_qty" placeholder="จำนวน" value="<?= $pqty ?>" min="1" require>
                               <input type="hidden" name="product_id" value="<?= $pid ?>">
                               <br>

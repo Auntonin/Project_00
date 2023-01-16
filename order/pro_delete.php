@@ -11,6 +11,6 @@ if (isset($_GET["Line"])) {
 	// echo $_SESSION["strProductID"][$Line] = "";
 	// echo $_SESSION["strQty"][$Line] = "";
 }
-	header("location:cart.php");
+	header("location:../cart.php");
 
 ?>

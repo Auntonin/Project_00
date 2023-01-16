@@ -30,7 +30,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
     <div class="alert alert-primary" role="alert">Product</div>
     <table class="table table-striped">
       <tr>
-        <th>ชื่อสินค้า</th>
+        <th class="w-25">ชื่อสินค้า</th>
         <th>รูปสินค้า</th>
         <th>ประเภทสินค้า</th>
         <th>ราคาสินค้า</th>
@@ -52,7 +52,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
           <?= $rs['product_name']; ?>
         </td>
         <td>
-          <img src="img/product/<?= $rs['images'] ?>" width="120" height="80">
+          <img src="img/product/<?= $rs['images'] ?>" width="120" height="110">
         </td>
         <td>
           <?php
@@ -60,7 +60,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
           ?>
         </td>
         <td>
-          <?= $rs['product_price']; ?>
+          <?= number_format($rs['product_price']); ?>
         </td>
         <td>
           <?= $rs['product_qty']; ?>
