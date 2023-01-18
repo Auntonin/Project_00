@@ -27,11 +27,8 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
 
 <body class="text-center">
   <div class="container">
-    <!-- nav bar -->
-    <?php
-    require_once("../menu.php")
-              ?>
-    <div class="alert alert-primary" role="alert">Category</div>
+  
+    <div class="alert alert-primary mt-3" role="alert">Category</div>
     <table class="table table-striped">
       <tr>
 

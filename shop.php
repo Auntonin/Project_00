@@ -16,6 +16,8 @@ require_once "condb.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
 </head>
 
 <body>
@@ -23,12 +25,12 @@ require_once "condb.php";
         <!-- nav bar -->
         <?php
         require_once("menu.php")
-            ?>
+        ?>
         <div class="alert alert-primary" role="alert">Product</div>
         <div class="col-4">
             <label class="control-label m-2">ประเภทสินค้า</label>
 
-            <select class="form-control" placeholder="ประเภทสินค้า" name="cate" id="cate"></select>
+            <select class="form-control" placeholder="cate" name="cate" id="cate"></select>
             <button class="btn m-2 col-3 btn-primary">All</button>
 
         </div>
@@ -36,6 +38,11 @@ require_once "condb.php";
 
         <br>
         <table class="table table-striped">
+            <tr>
+                <th>
+                    <button id="action-btn">click   </button>
+                </th>
+            </tr>
             <tr>
                 <th class="w-25">ชื่อสินค้า</th>
                 <th>รูปสินค้า</th>
@@ -45,6 +52,7 @@ require_once "condb.php";
                 <th>สั่งซื้อสินค้า</th>
             </tr>
             <?php
+            // $a = 1;
             $key_word = @$_POST['keyword'];
             if ($key_word != "") {
                 $sql = "SELECT p.*,c.cate_name
@@ -53,7 +61,9 @@ require_once "condb.php";
                 WHERE product_id='$key_word' OR product_name like '%$key_word%'
                 ORDER BY product_name";
             } else if (isset($_POST['cid']) != "") {
+                // elseif( $a==1){
                 $cate_id = $_POST['cid'];
+                // $cate_id = 3;
                 $sql = "SELECT p.*,c.cate_name
                 FROM products p INNER JOIN category c 
                 ON p.cate_id = c.cate_id 
@@ -70,7 +80,7 @@ require_once "condb.php";
             while ($rs = $result->fetch_array()) {
                 $cn = $rs['cate_name'];
                 $pid = $rs['product_id'];
-                ?>
+            ?>
 
                 <tr>
                     <td>
@@ -89,13 +99,12 @@ require_once "condb.php";
                         <?= $rs['product_qty']; ?>
                     </td>
                     <td>
-                        <a type="submit" name="product_order" href="order/order.php?p_id=<?= $pid ?>"
-                            class='btn btn-outline-primary me-2'>add to cart</a>
+                        <a type="submit" name="product_order" href="order/order.php?p_id=<?= $pid ?>" class='btn btn-outline-primary me-2'>add to cart</a>
                     </td>
                 </tr>
 
 
-                <?php
+            <?php
             }
 
 
@@ -107,9 +116,36 @@ require_once "condb.php";
     </div>
 
 
+<!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script> -->
+<!-- <script src="service/category.service.js"></script> -->
+<script>
 
-    <script src="service/category.service.js"></script>
-    <!-- JavaScript Bundle with Popper -->
+$(document).ready(function() {
+  $('#cate').empty().append('<option value="">---เลือก---</option>');
+  $.ajax({
+      dataType: "json",
+      type: 'POST',
+      url: 'service/ajax.category.php',
+      success: function (data) {
+          $.each(data, function (key, val) {
+              $('#cate').append('<option value=' + val.id + '>' + val .name+ '</option>');
+          });
+          $('#cate').select2();
+        //   $('#district').select2();
+        //   $('#subdistrict').select2();
+      }
+  });
+
+  /****** เลือกประเภทสินค้า *******/
+  $('#cate').on('change',function(){
+   
+  });
+});
+$('#action-btn').click(()=>{
+  console.log('clicked!');
+});
+</script>
+
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 

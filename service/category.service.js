@@ -1,3 +1,7 @@
+$('#action-btn').click(()=>{
+  console.log('clicked!');
+});
+
 $(document).ready(function() {
   $('#cate').empty().append('<option value="">เลือก</option>');
   $.ajax({
@@ -19,13 +23,9 @@ $(document).ready(function() {
    
   });
 
-//   /****** เลือกอำเภอ *******/
-//   $('#district').on('change',function(){
-//       if($('#subdistrict').length > 0){
-//           callSubDistrict($(this).val(),null);
-//       }
-//   });
+
 });
+
 
 // function callDistrict(proVinceId, selector) {
 //     $('#district').empty().append('<option value="">เลือก</option>');

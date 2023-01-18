@@ -11,8 +11,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 ?>
-   <!-- sweetalert -->
-   <script src="sweetalert/dist/sweetalert2.all.min.js"></script>
+
 
 <?php
 function alert($txt)

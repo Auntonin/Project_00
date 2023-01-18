@@ -17,9 +17,9 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
             alert("เฮ้ย! ชื่อประเภทสินค้ามีอยู่แล้ว");
             
         }
-    }
+    } else {
 
-?>
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,12 +35,12 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
 <body class="text-center">
     <div class="container">
         <?php
-    $cid = $_GET['cate_id'];
-    $sql = "SELECT * FROM category WHERE cate_id=$cid";
-    $result = $conn->query($sql);
-    $rs = $result->fetch_array();
-    $cid = $rs['cate_id'];
-    $cn = $rs['cate_name'];
+        $cid = $_GET['cate_id'];
+        $sql = "SELECT * FROM category WHERE cate_id=$cid";
+        $result = $conn->query($sql);
+        $rs = $result->fetch_array();
+        $cid = $rs['cate_id'];
+        $cn = $rs['cate_name'];
 
         ?>
         <form class="form-signin" action="" method="post">
@@ -64,6 +64,7 @@ if (isset($_SESSION['user_level']) && $_SESSION['user_level'] == 0) {
 
 </html>
 <?php
+    }
 } else {
     header('location: ../index.php');
 
