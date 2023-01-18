@@ -58,7 +58,7 @@ require_once "condb.php";
                 $sql = "SELECT p.*,c.cate_name
                 FROM products p INNER JOIN category c 
                 ON p.cate_id = c.cate_id 
-                WHERE product_id='$key_word' OR product_name like '%$key_word%'
+                WHERE product_id='$key_word' OR product_name like '%$key_word%'  OR cate_name like '%$key_word%'
                 ORDER BY product_name";
             } else if (isset($_POST['cid']) != "") {
                 // elseif( $a==1){
