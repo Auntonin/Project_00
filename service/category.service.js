@@ -1,13 +1,12 @@
-$('#action-btn').click(()=>{
-  console.log('clicked!');
-});
+
+
 
 $(document).ready(function() {
   $('#cate').empty().append('<option value="">เลือก</option>');
   $.ajax({
       dataType: "json",
       type: 'POST',
-      url: 'service/ajax.category.php',
+      url: 'ajax.category.php',
       success: function (data) {
           $.each(data, function (key, val) {
               $('#cate').append('<option value=' + val.id + '>' + val .name+ '</option>');
@@ -18,10 +17,7 @@ $(document).ready(function() {
       }
   });
 
-  /****** เลือกประเภทสินค้า *******/
-  $('#cate').on('change',function(){
-   
-  });
+ 
 
 
 });

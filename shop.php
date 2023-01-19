@@ -16,7 +16,10 @@ require_once "condb.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+    
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/jquery-3.5.1.js"></script>
+    <script src="bootstrap/js/jquery.dataTables.min.js"></script>
 
 </head>
 
@@ -29,20 +32,17 @@ require_once "condb.php";
         <div class="alert alert-primary" role="alert">Product</div>
         <div class="col-4">
             <label class="control-label m-2">ประเภทสินค้า</label>
-
+        <form action="" method="post">
             <select class="form-control" placeholder="cate" name="cate" id="cate"></select>
-            <button class="btn m-2 col-3 btn-primary">All</button>
-
+            <button class="btn m-2 col-3 btn-primary" type="submit">Search</button>
+            <button class="btn m-2 col-3 btn-primary" name="all" value="all" type="submit" >All</button>
+            </form>
         </div>
         <br>
 
         <br>
-        <table class="table table-striped">
-            <tr>
-                <th>
-                    <button id="action-btn">click   </button>
-                </th>
-            </tr>
+        <table id="example" class="table table-striped">
+           
             <tr>
                 <th class="w-25">ชื่อสินค้า</th>
                 <th>รูปสินค้า</th>
@@ -60,21 +60,39 @@ require_once "condb.php";
                 ON p.cate_id = c.cate_id 
                 WHERE product_id='$key_word' OR product_name like '%$key_word%'  OR cate_name like '%$key_word%'
                 ORDER BY product_name";
-            } else if (isset($_POST['cid']) != "") {
-                // elseif( $a==1){
-                $cate_id = $_POST['cid'];
-                // $cate_id = 3;
-                $sql = "SELECT p.*,c.cate_name
-                FROM products p INNER JOIN category c 
-                ON p.cate_id = c.cate_id 
-                AND p.cate_id='$cate_id'
-                ORDER BY product_name";
-            } else {
+            }  else if(isset($_POST['all'])){
                 $sql = "SELECT p.*,c.cate_name
                 FROM products p INNER JOIN category c 
                 ON p.cate_id = c.cate_id 
                 ORDER BY product_name";
             }
+            else if (isset($_POST['cate']) != "") {
+                // elseif( $a==1){
+                $cate_id = $_POST['cate'];
+                // $cate_id = 3;
+                if($cate_id == "all"){
+                    $sql = "SELECT p.*,c.cate_name
+                    FROM products p INNER JOIN category c 
+                    ON p.cate_id = c.cate_id 
+                    ORDER BY product_name";
+
+                }
+                else{
+                    $sql = "SELECT p.*,c.cate_name
+                    FROM products p INNER JOIN category c 
+                    ON p.cate_id = c.cate_id 
+                    WHERE p.cate_id='$cate_id'
+                    ORDER BY product_name";
+                }
+               
+            }
+            else{
+                $sql = "SELECT p.*,c.cate_name
+                FROM products p INNER JOIN category c 
+                ON p.cate_id = c.cate_id 
+                ORDER BY product_name";
+            }
+
 
             $result = $conn->query($sql);
             while ($rs = $result->fetch_array()) {
@@ -114,14 +132,13 @@ require_once "condb.php";
         </table>
 
     </div>
+ 
 
-
-<!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script> -->
-<!-- <script src="service/category.service.js"></script> -->
+    <!-- <script src="service/category.service.js"></script> -->
 <script>
 
 $(document).ready(function() {
-  $('#cate').empty().append('<option value="">---เลือก---</option>');
+  $('#cate').empty().append('<option value="all">---เลือก---</option>');
   $.ajax({
       dataType: "json",
       type: 'POST',
@@ -136,17 +153,16 @@ $(document).ready(function() {
       }
   });
 
-  /****** เลือกประเภทสินค้า *******/
-  $('#cate').on('change',function(){
-   
-  });
+//   $('#example').DataTable({
+//         order: [[3, 'desc']],
+//     });
+
+  
 });
-$('#action-btn').click(()=>{
-  console.log('clicked!');
-});
+
 </script>
 
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+  
 </body>
 
 </html>
