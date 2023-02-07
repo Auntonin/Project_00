@@ -13,7 +13,7 @@ require_once "condb.php";
       <title>book_shop</title>
       <!-- CSS only -->
       <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-
+      <link rel="stylesheet" href="bootstrap/css/modal.css">
 </head>
 
 <body>
@@ -22,6 +22,12 @@ require_once "condb.php";
             <?php
     require_once("menu.php")
           ?>
+            <div class="modal">
+        <div class="modal-bg"></div>
+        <div class="modal-card">
+          
+        </div>
+      </div>
             <div class="alert alert-primary" role="alert">Product</div>
             <table class="table table-striped">
                   <tr>
@@ -60,7 +66,7 @@ require_once "condb.php";
                               <?= $rs['product_qty']; ?>
                         </td>
                         <td>
-                              <a type="submit" name="product_order" href="order/order.php?p_id=<?= $pid ?>"
+                              <a name="product_order" href="order/order.php?p_id=<?= $pid ?>"
                                     class='btn btn-outline-primary me-2'>add to cart</a>
                         </td>
                   </tr>

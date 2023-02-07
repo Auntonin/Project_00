@@ -42,6 +42,14 @@
     } else {
 
       echo "<a type='button' class='btn btn-outline-primary me-2' href='login/login.php'>Login</a>";
+      ?>
+      <div class="modal">
+        <div class="modal-bg"></div>
+        <div class="modal-card">
+          
+        </div>
+      </div>
+      <?php
       echo "<a type='button' class='btn btn-primary' href='adduser/add.php'>Sign-up</a>";
 
     }
