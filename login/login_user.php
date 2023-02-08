@@ -2,9 +2,10 @@
 session_start();
 if (isset($_SESSION['login_naem'])) {
   header("location : ../index.php");
-} else if (isset($_POST['usernames'])) {
+} else if (isset($_POST['usernames']) && trim($_POST['usernames']) != "")  {
 
   require_once "../condb.php";
+
   $uname = $_POST['usernames'];
   $upasswd = $_POST['Password'];
   $_SESSION['login_name'] = "";
@@ -25,12 +26,12 @@ if (isset($_SESSION['login_naem'])) {
     } else if ($rs['user_level'] == 0) {
       header("location: ../admin.php");
     } else {
-      header("location: login.php");
+      header("location: login_user.php");
     }
 
   } else {
     echo "No!";
-    header("location: login.php");
+    header("location: login_user.php");
   }
 
 } else {
@@ -77,20 +78,23 @@ if (isset($_SESSION['login_naem'])) {
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="text" class="form-control" name="usernames">
+      <input type="text" class="form-control my-3" name="usernames">
       <label for="floatingInput">UserName</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" name="Password">
+      <input type="password" class="form-control my-3" id="floatingPassword" name="Password">
       <label for="floatingPassword">Password</label>
     </div>
     <br>
-
-    <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Sign-in</button>
+    <center>
+    <a type='button' class='btn btn-lg btn-outline-primary me-2' href='../adduser/add_user.php'>Sing-up</a>
+    <button class="btn btn-lg btn-primary" type="submit" value="ok">Sign-in</button>
+  </center>
     <br>
     <?php
   echo "<br>";
-  echo "<a type='button' class='btn btn-outline-primary me-2' href='../adduser/add.php'>Sing-up</a>";
+
+  echo "<center><a type='button' class='btn btn-primary me-2' href='../index.php'>Close</a></center>";
     ?>
   </form>
 

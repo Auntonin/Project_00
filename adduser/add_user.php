@@ -17,14 +17,14 @@ else if (isset($_POST['usernames'])) {
             $_SESSION["login_name"] = $uname;
             header("location: ../index.php");
         } elseif (trim($upasswd) != "") {
-            header("location: add.php");
+            header("location: add_user.php");
         } else {
             echo "No!";
-            header("location: add.php");
+            header("location: add_user.php");
         }
     } else {
 
-        header("location: add.php");
+        header("location: add_user.php");
     }
 } else {
 ?>
@@ -65,28 +65,30 @@ else if (isset($_POST['usernames'])) {
       <h1 class="h3 mb-3 fw-normal">Please Sign Up</h1>
 
       <div class="form-floating">
-        <input type="text" class="form-control" name="usernames">
+        <input type="text" class="form-control my-2" name="usernames">
         <label for="floatingInput">UserName</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" name="Password">
+        <input type="password" class="form-control my-2" name="Password">
         <label for="floatingPassword">Password</label>
       </div>
       <div class="form-floating">
-        <input type="text" class="form-control" id="floatingPassword" name="firstname">
+        <input type="text" class="form-control my-2" id="floatingPassword" name="firstname">
         <label for="floatingPassword">firstname</label>
       </div>
       <div class="form-floating">
-        <input type="text" class="form-control" name="lastname">
+        <input type="text" class="form-control my-2" name="lastname">
         <label for="floatingPassword">lastname</label>
       </div>
       <br>
-
-      <button class="w-100 btn btn-lg btn-primary" type="submit" value="ok">Sign-Up</button>
+      <center>
+      <a type="button" class='btn btn-lg btn-primary me-2' href='../login/login_user.php'>Sing-in</a>
+      <button class="btn btn-lg btn-outline-primary me-2" type="submit" value="ok">Sign-Up</button>
       <br>
+  </center>
       <?php
   echo "<br>";
-  echo "<center><a type='button' class='btn btn-outline-primary me-2' href='../login/login.php'>Sing-in</a></center>";
+  echo "<center><a type='button' class='btn btn-primary me-2' href='../index.php'>Close</a></center>";
       ?>
     </form>
     <br>

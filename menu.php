@@ -41,16 +41,63 @@
 
     } else {
 
-      echo "<a type='button' class='btn btn-outline-primary me-2' href='login/login.php'>Login</a>";
+      // echo "<a type='button' class='btn btn-outline-primary me-2' href='login/login.php'>Login</a>";
       ?>
-      <div class="modal">
-        <div class="modal-bg"></div>
-        <div class="modal-card">
-          
-        </div>
+     <!-- Button trigger modal Login-->
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Login
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+      <center>
+      <a type='button' class='btn btn-outline-primary m-2 col-3' href='login/login_user.php'>Login-User</a><br>
+      <a type='button' class='btn btn-outline-primary m-2 col-3' href='login/login_shop.php'>Login-Shop</a>
+    </center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal sign-up-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+Sign-up
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign-up</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <center>
+      <a type='button' class='btn btn-outline-primary m-2 col-4' href='adduser/add_user.php'>Sign-up-User</a><br>
+      <a type='button' class='btn btn-outline-primary m-2 col-4' href='adduser/add_shop.php'>Singn-up-Shop</a>
+    </center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
       <?php
-      echo "<a type='button' class='btn btn-primary' href='adduser/add.php'>Sign-up</a>";
+      // echo "<a type='button' class='btn btn-primary' href='adduser/add.php'>Sign-up</a>";
 
     }
     ?>
