@@ -17,7 +17,7 @@
   <div class="container">
     <h3>ประเภทสินค้า</h3>
     <form action="" id="formMain" method="post">
-      <select name="cate" id="cate" class="mb-5"> 
+      <select name="cate" id="cate" class="mb-5">
         <option value="all">เลือก</option>
         <?php
         require_once('../../condb.php');
@@ -60,7 +60,21 @@
   </div>
   <script>
     $(document).ready(function () {
-      // table = $('#product_list').DataTable();
+      // $.ajax({
+      //   url: 'product_list.php',
+      //   type: 'POST',
+      //   data: { id: 'all' }, // send parameter to server
+      //   function (d) {
+      //     d.id = $('#cate').val(); {
+      //       "columns": [
+      //         { "data": "product_id" },
+      //         { "data": "cate_id" },
+      //         { "data": "product_name" },
+      //         { "data": "product_price" },
+      //         { "data": "product_qty" },
+      //         { "data": "images" },
+      //       ]
+      //     });
       $('#cate').change(function () {
         // var cid=$(this).attr("id");
         var url = 'product_list.php'; // ระบุไฟล์ที่ต้องการให้ส่งข้อมูลไปเพื่อตอบกลับมา
@@ -77,20 +91,13 @@
           "autoWidth": false,
           "pageLength": 25,
           // ส่งข้อมูล แบบ POST ไปยังไฟล์ ที่กำหนดไว้ใน url
-          
+
           "ajax": {
-            "url":url,
-            "type":"POST",
-            "data":  
-            // {id:cid},
-            $("#cate").serialize(),
-           function (data) { // กำหนดค่าให้ตัวแปร data คือค่าที่ได้มาจากการส่งค่าไป
-              // d.business_name = $('#business_name').val()
-              console.log(data);
-           
+            "url": url,
+            "type": "POST",
+            "data": function (d) {
+              d.id = $('#cate').val();
             }
-
-
           },
           "columns": [
             { "data": "product_id" },
@@ -98,7 +105,7 @@
             { "data": "product_name" },
             { "data": "product_price" },
             { "data": "product_qty" },
-            { "data": "product_images" },
+            { "data": "images" },
           ],
           "language": {
             "processing": '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">กำลังค้นหาข้อมูล...</span> ',

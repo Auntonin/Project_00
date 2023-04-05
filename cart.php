@@ -37,7 +37,7 @@ if (isset($_SESSION['login_name']))
         <form action="" method="POST">
           <div class="row">
             <div class="col-md -10">
-              <table class="table table-hover">
+              <table id="product_list" class="table table-hover">
 
                 <tr>
                   <th>ลำดับที่</th>
@@ -68,7 +68,7 @@ if (isset($_SESSION['login_name']))
                   <td><?= $ord ?></td>
                   <td><?= $rs_pro['product_name'] ?></td>
                   <td><?= $rs_pro['product_price'] ?></td>
-                  <td><?= $_SESSION["strQty"][$i] ?></td>
+                  <td><input style="text-align:center;" value="<?= $_SESSION["strQty"][$i] ?>" type="number"></td>
                   <td><?= $sump ?></td>
                   <td><a href="order/pro_delete.php?Line=<?= $i ?>">Delete</a></td>
                 </tr>
