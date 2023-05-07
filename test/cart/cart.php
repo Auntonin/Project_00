@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['login_name'])) {
-  require_once('condb.php');
+  require_once('../../condb.php');
   if (isset($_SESSION["intLine"]) != "") {
     //รับ id สินค้า
     // $pid = $_GET['p_id'];
@@ -19,9 +19,9 @@ if (isset($_SESSION['login_name'])) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
       <!-- CSS only -->
-      <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-      <script src="bootstrap/js/jquery-3.5.1.js"></script>
-  <script src="bootstrap/js/jquery.dataTables.min.js"></script>
+      <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+      <script src="../../bootstrap/js/jquery-3.5.1.js"></script>
+      <script src="../../bootstrap/js/jquery.dataTables.min.js"></script>
 
     </head>
 
@@ -30,7 +30,7 @@ if (isset($_SESSION['login_name'])) {
       <div class="container">
 
         <!-- nav_bar -->
-        <?php require_once('menu.php'); ?>
+        <?php require_once('../../menu.php'); ?>
         <!-- end_nav_bar -->
 
 
@@ -76,7 +76,8 @@ if (isset($_SESSION['login_name'])) {
                         <?= $rs_pro['product_price'] ?>
                       </td>
                       <td><input style="text-align:center;" value="<?= $_SESSION["strQty"][$i] ?>" type="number" id="p_qty">
-                      <input id="p_id" type="hidden"<? $_SESSION["strProductID"][$i] ?>>
+                        <input id="p_id<?= $i ?>" type="text" value="<?= $_SESSION["strProductID"][$i] ?>">
+
                       </td>
                       <td>
                         <?= $sump ?>
@@ -113,26 +114,30 @@ if (isset($_SESSION['login_name'])) {
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
-        <script>
-  $(document).ready(function() {
-  $('#product_list').on('change', 'input[id^="p_qty"]', function() {
-    var lineNo = $(this).closest('tr').index(); // get the line number of the current row
-    var quantity = $(this).val(); // get the value of the input field
-    var productId = $('#p_id' + lineNo).val(); // get the product id value for the current row
-    $.ajax({
-      url: 'order/order.php',
-      type: 'POST',
-      data: { quantity: quantity, product_id: productId }, // send the quantity and product id values to the server
-      success: function(response) {
-        console.log(response); // do something with the response from the server
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.log(textStatus, errorThrown); // handle errors
-      }
-    });
-  });
-});
-</script>
+      <script>
+        $(document).ready(function () {
+          $('#product_list').on('change', 'input[id^="p_qty"]', function () {
+            var lineNo = $(this).closest('tr').index();
+            var quantity = $(this).val();
+            var productId = $('#p_id' + lineNo).val(); // use the unique identifier to get the product id
+            $.ajax({
+              url: 'order/order.php',
+              type: 'POST',
+              data: {
+                quantity: quantity,
+                product_id: productId
+              },
+              success: function (response) {
+                console.log(response); // do something with the response from the server
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+              }
+            });
+          });
+        });
+
+      </script>
     </body>
 
     </html>

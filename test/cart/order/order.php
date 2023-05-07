@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../condb.php');
+require_once('../../../condb.php');
 
  print_r($_POST);
 function updateQuantity($productID, $newQuantity) {
