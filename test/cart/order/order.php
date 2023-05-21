@@ -3,12 +3,10 @@ session_start();
 require_once('../../../condb.php');
 
  print_r($_POST);
-function updateQuantity($productID, $newQuantity) {
-    $key = array_search($productID, $_SESSION["strProductID"]);
-    if ((string)$key !== "") {
-        $_SESSION["strQty"][$key] = $newQuantity;
-    }
+if(isset($_POST)){
+	
 }
+
 if(!isset($_SESSION["intLine"]))  
 {
 	 $_SESSION["intLine"] = 0;
@@ -25,7 +23,6 @@ else
 	}
 	else
 	{
-		updateQuantity($_GET["p_id"], $_POST["quantity"]);
 		 $_SESSION["intLine"] = $_SESSION["intLine"] + 1;
 		 $intNewLine = $_SESSION["intLine"];
 		 $_SESSION["strProductID"][$intNewLine] = $_GET["p_id"];
