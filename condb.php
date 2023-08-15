@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 <?php
 function alert($txt)
 {
-  echo "<script> alert($txt);</script>";
+  echo '<script>alert("'.$txt.'")</script>';
 }
 function nl(){
   echo "<br>";
