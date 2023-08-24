@@ -17,7 +17,7 @@ require_once "condb.php";
 </head>
 
 <body>
-      
+
       <div class="container">
 
             <!-- nav bar -->

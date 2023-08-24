@@ -28,7 +28,6 @@ if (isset($_SESSION['login_naem'])) {
     } else {
       header("location: login_user.php");
     }
-
   } else {
     echo "No!";
     header("location: login_user.php");
