@@ -1,7 +1,7 @@
 <?php
 
 // ที่อยู่ของไฟล์รูปภาพ
-$imagePath = 'IMG_20230815_204914.jpg';
+$imagePath = '20230817_122647.jpg';
 
 // อ่านข้อมูล EXIF ด้วยฟังก์ชัน exif_read_data
 $exif = exif_read_data($imagePath);
